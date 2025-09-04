@@ -175,12 +175,13 @@ bool NetworkManager::connectWiFi(const String& newSsid, const String& newPasswor
     // Save credentials
     saveWiFiCredentials(ssid, password);
     
-    return connectToWiFi();
+    connectToWiFi();
+    return true;
 }
 
-bool NetworkManager::connectToWiFi() {
+void NetworkManager::connectToWiFi() {
     if (ssid.isEmpty()) {
-        return false;
+        return;
     }
     
     // Stop AP mode if running
@@ -199,8 +200,6 @@ bool NetworkManager::connectToWiFi() {
     if (logger) {
         logger->logInfo(EVENT_WIFI_CONNECTED, "Connecting to WiFi", "SSID: " + ssid);
     }
-    
-    return true;
 }
 
 void NetworkManager::disconnectWiFi() {

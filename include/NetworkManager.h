@@ -95,7 +95,6 @@ public:
     
     // OTA updates
     void initializeOTA();
-    void handleOTA();
     
     // Web interface
     void enableWebInterface(bool enable);

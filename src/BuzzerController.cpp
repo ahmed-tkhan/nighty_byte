@@ -107,7 +107,7 @@ void BuzzerController::playPattern(BuzzerPattern pattern) {
             break;
             
         case PATTERN_CONTINUOUS:
-            playTone(currentFrequency);
+            playTone(currentFrequency, 0);
             isActive = true;
             break;
             
@@ -159,12 +159,7 @@ void BuzzerController::playTone(int frequency, int duration) {
         ledcChangeFrequency(pwmChannel, frequency, 8);
         ledcWrite(pwmChannel, 128); // 50% duty cycle (volume control)
         currentFrequency = frequency;
-        
-        // If duration is specified, set up auto-stop
-        if (duration > 0) {
-            // Note: For simplicity, we don't implement auto-stop here
-            // In a more complex implementation, you could use a timer
-        }
+        // If duration is specified, set up auto-stop (not implemented)
     } else {
         stopTone();
     }
@@ -182,7 +177,7 @@ void BuzzerController::updatePattern() {
             if (currentTime - lastToggleTime >= 250) { // 250ms on/off
                 toneOn = !toneOn;
                 if (toneOn) {
-                    playTone(currentFrequency);
+                    playTone(currentFrequency, 0);
                 } else {
                     stopTone();
                 }
@@ -194,7 +189,7 @@ void BuzzerController::updatePattern() {
             if (currentTime - lastToggleTime >= 1000) { // 1000ms on/off
                 toneOn = !toneOn;
                 if (toneOn) {
-                    playTone(currentFrequency);
+                    playTone(currentFrequency, 0);
                 } else {
                     stopTone();
                 }
@@ -250,7 +245,7 @@ void BuzzerController::executePatternStep(const BuzzerTone* pattern, int pattern
     if (!toneOn) {
         // Start new tone
         if (patternStep < patternLength - 1 && pattern[patternStep].frequency != 0) {
-            playTone(pattern[patternStep].frequency);
+            playTone(pattern[patternStep].frequency, 0);
             toneOn = true;
             lastToggleTime = currentTime;
         } else {
@@ -284,12 +279,8 @@ void BuzzerController::executePatternStep(const BuzzerTone* pattern, int pattern
     }
 }
 
-void BuzzerController::playTone(int frequency) {
-    playTone(frequency, 0); // Continuous tone
-}
-
 void BuzzerController::playBeep(int frequency, int duration) {
-    playTone(frequency);
+    playTone(frequency, 0);
     delay(duration); // Simple blocking beep
     stopTone();
 }

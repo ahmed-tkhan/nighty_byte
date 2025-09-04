@@ -226,7 +226,9 @@ void SensorManager::setLightThreshold(int threshold) {
 String SensorManager::getSensorStatus() {
     String status = "Sensor Status:\n";
     status += "Light Level: " + String(currentLightLevel) + "/4095";
-    status += " (" + (isDarkEnvironment() ? "Dark" : "Light") + ")\n";
+    status += " (";
+    status += isDarkEnvironment() ? "Dark" : "Light";
+    status += ")\n";
     status += "USB Connected: " + String(currentUsbState ? "Yes" : "No") + "\n";
     status += "Pill Box: " + String(currentPillBoxState ? "Open" : "Closed") + "\n";
     status += "Last Update: " + String(millis()) + "ms\n";

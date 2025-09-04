@@ -53,11 +53,6 @@ private:
     static const BuzzerTone errorPattern[];
     static const BuzzerTone notificationPattern[];
     
-    void playTone(int frequency, int duration = 0);
-    void stopTone();
-    void updatePattern();
-    void executePatternStep(const BuzzerTone* pattern, int patternLength);
-
 public:
     BuzzerController(Logger* log);
     ~BuzzerController();
@@ -71,7 +66,6 @@ public:
     void stopPattern();
     
     // Custom tones
-    void playTone(int frequency);
     void playBeep(int frequency = BUZZER_FREQUENCY, int duration = 200);
     void playDoubleBeep();
     void playTripleBeep();
@@ -87,6 +81,13 @@ public:
     // Test functions
     void performBuzzerTest();
     void playStartupTone();
+
+    // Added missing method declarations    
+    void playTone(int frequency, int duration = 0);
+    void stopTone();
+    void updatePattern();
+    void executePatternStep(const BuzzerTone* pattern, int patternLength);
+
 };
 
 #endif // BUZZER_CONTROLLER_H
