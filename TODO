@@ -1,0 +1,43 @@
+1. Buzzer Test
+Confirm correct GPIO pin (e.g., GPIO2).
+Test simple on/off.
+Test PWM/tone generation (if supported).
+Test different beep patterns.
+
+
+2. Pill Box Contact Switch
+Confirm correct GPIO pin (e.g., GPIO4).
+Test digital read (open/closed).
+Test with/without internal pullup.
+Debounce logic (if needed).
+
+
+3. Light Sensor (LDR)
+Confirm correct ADC pin (e.g., GPIO36).
+Read analog value in bright and dark conditions.
+Map ADC value to light level.
+Test threshold detection for “dark”.
+
+
+4. USB Charging Detection
+Confirm correct pin (e.g., GPIO39, ADC or digital).
+Test voltage or logic level when USB is connected/disconnected.
+Confirm detection is reliable and safe for ESP32 input.
+
+
+5. RTC/Timekeeping
+Test time setting and reading.
+Test time persistence across resets (if battery-backed).
+
+
+6. Logging (Flash/SD)
+Test writing and reading log entries.
+Confirm log persists after reset.
+
+
+7. WiFi/BLE Connectivity
+Test WiFi scan and connect.
+Test BLE advertising (if used).
+Confirm basic communication (e.g., ping, simple message).
+
+
