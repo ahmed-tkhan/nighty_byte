@@ -42,4 +42,3 @@
 
 *.pio/*
 *.vscode/*
-!*.pio/libdeps

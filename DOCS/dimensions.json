@@ -1,0 +1,14 @@
+[
+    {
+        "piece": "pillbox",
+        "width": 90,
+        "height": 45,
+        "depth": 200
+    },
+    {
+        "piece": "phone",
+        "width": 80,
+        "height": 15,
+        "depth": 160
+    }
+]
